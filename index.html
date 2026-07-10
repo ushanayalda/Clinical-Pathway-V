@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Clinical Pathway Case 001 self-run clinical station practice prototype.">
+  <title>Clinical Pathway | Case 001</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to main content</a>
+  <header class="app-header" id="app-header">
+    <div class="header-inner">
+      <button class="brand-button" type="button" data-route="home" aria-label="Open Clinical Pathway home">
+        <span class="brand-mark" aria-hidden="true">CP</span>
+        <span>Clinical Pathway</span>
+      </button>
+      <nav class="global-nav" id="global-nav" aria-label="Primary navigation">
+        <button type="button" class="nav-button" data-route="home">Home</button>
+        <button type="button" class="nav-button" data-route="library">Library</button>
+        <button type="button" class="nav-button" data-route="journey">Journey</button>
+      </nav>
+      <div class="attempt-header" id="attempt-header" hidden>
+        <span>Station 001</span>
+        <span class="attempt-state" id="attempt-state-label">Reading</span>
+        <button type="button" class="button button-quiet button-small" id="leave-attempt">Leave attempt</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="app-footer" id="app-footer">
+    <p>Practice prototype. It does not listen to or automatically score speech and is not AMC-endorsed.</p>
+  </footer>
+
+  <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+  <noscript>
+    <div class="noscript">JavaScript is required to run this self-guided station.</div>
+  </noscript>
+</body>
+</html>
