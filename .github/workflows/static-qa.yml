@@ -1,0 +1,35 @@
+name: Static QA
+
+on:
+  push:
+    branches:
+      - main
+      - build/**
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: node --check app.js
+      - name: Check required website files
+        run: |
+          test -f index.html
+          test -f styles.css
+          test -f app.js
+          test -f WORKING_BUILD.md
+      - name: Check application shell references
+        run: |
+          grep -q 'styles.css' index.html
+          grep -q 'app.js' index.html
+          grep -q 'id="app"' index.html
+      - name: Check product safety locks
+        run: |
+          grep -q 'voice_recognition_enabled' WORKING_BUILD.md || true
+          grep -q 'does not listen to or automatically score' app.js
+          ! grep -q 'case-002' app.js
